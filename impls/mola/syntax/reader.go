@@ -119,8 +119,12 @@ func read_list(r *TokenReader) (*language.MalValue, error) {
 
 func is_integer(s string) bool {
 	r := true
-	for _, c := range s {
+	for idx, c := range s {
 		if !unicode.IsDigit(c) {
+			// allow negative sign
+			if idx == 0 && c == '-' && len(s) > 1 {
+				continue
+			}
 			return false
 		}
 	}
