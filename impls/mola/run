@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+exec mola (dirname $0)/${STEP:-stepA_mal}.mola "${@}"
+
